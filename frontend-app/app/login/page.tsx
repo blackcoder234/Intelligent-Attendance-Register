@@ -30,10 +30,14 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-neutral-100 font-sans selection:bg-indigo-500/30 flex items-center justify-center p-6 relative overflow-hidden">
-      {/* Background Decorative Elements */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-600/20 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-[120px] pointer-events-none" />
+    <div className="min-h-screen text-neutral-100 font-sans selection:bg-indigo-500/30 flex items-center justify-center p-6 relative overflow-hidden">
+      {/* Background Image Wrapper */}
+      <div
+        className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-40 mix-blend-screen pointer-events-none"
+        style={{ backgroundImage: "url('/landing_bg.png')" }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-neutral-950/80 to-neutral-950"></div>
+      </div>
 
       {/* Main Authentication Card */}
       <motion.div
@@ -47,14 +51,19 @@ export default function LoginPage() {
           <div className="flex flex-col items-center mb-8">
             <Link
               href="/"
-              className="flex items-center gap-3 mb-6 group cursor-pointer"
+              className="flex items-center gap-3 mb-6 group cursor-pointer justify-center w-full"
             >
               <div className="w-10 h-10 rounded-xl bg-indigo-500 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-lg shadow-indigo-500/30">
                 <Eye className="w-6 h-6 text-white" />
               </div>
-              <span className="font-bold text-2xl tracking-tight bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
-                IntelliRegister
-              </span>
+              <div className="flex flex-col">
+                <span className="font-bold text-2xl tracking-tight bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent transform translate-y-1">
+                  IntelliRegister
+                </span>
+                <span className="text-[10px] text-neutral-400 text-left font-medium">
+                  by snippet.co
+                </span>
+              </div>
             </Link>
 
             <h2 className="text-2xl font-semibold mb-2">
@@ -219,13 +228,17 @@ export default function LoginPage() {
       </motion.div>
 
       {/* Footer Link */}
-      <div className="absolute bottom-6 text-sm text-neutral-600 z-10">
+      <div className="absolute bottom-6 flex flex-col items-center gap-2 z-10">
         <Link
           href="/"
-          className="hover:text-neutral-400 transition-colors flex items-center gap-1"
+          className="text-sm text-neutral-500 hover:text-white transition-colors flex items-center gap-1 group"
         >
-          <ArrowRight className="w-4 h-4 rotate-180" /> Back to Dashboard
+          <ArrowRight className="w-4 h-4 rotate-180 group-hover:-translate-x-1 transition-transform" />{" "}
+          Back to Landing Page
         </Link>
+        <span className="text-xs text-neutral-500 font-medium tracking-wide">
+          &copy; {new Date().getFullYear()} snippet.co
+        </span>
       </div>
     </div>
   );
